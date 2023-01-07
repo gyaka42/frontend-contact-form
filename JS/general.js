@@ -75,6 +75,10 @@ contactForm.addEventListener("submit",(event)=>{
         date:new Date()
     }
 
+    submitBtn.disabled = true
+    submitBtn.classList.replace("submitBtnActive", "submitBtnDisabled")
+    submitBtn.innerText = "Gonderiliyor"
+
     fetch("http://localhost:3004/add-form",{
         method:"POST",
         headers:{
@@ -87,11 +91,36 @@ contactForm.addEventListener("submit",(event)=>{
     .then(data=>{
         console.log(data);
         if(data.status === 200){
-
+            reponseContainer.style.display="block"
+            reponseContainer.classList.add("responseSuccess")
+            responseText.innerText = "Formunuz Basariyla Gonderildi"
+            setTimeout(() => {
+                reponseContainer.style.display="none"
+                reponseContainer.classList.remove("responseSuccess")
+                responseText.innerText=""
+                submitBtn.disabled=false
+                submitBtn.classList.replace("submitBtnDisabled", "submitBtnActive")
+                submitBtn.innerText="Gonder"
+                nameInput.value=""
+                surname.value=""
+                email.value=""
+                message.value=""
+            }, 2500);
         }
     })
     .catch(err=>{
         console.log(err);
+            reponseContainer.style.display="block"
+            reponseContainer.classList.add("responseFail")
+            responseText.innerText = "Formunuzu Gonderirken Bir Hata Olustu"
+            setTimeout(() => {
+                reponseContainer.style.display="none"
+                reponseContainer.classList.remove("responseSuccess")
+                responseText.innerText=""
+                submitBtn.disabled=false
+                submitBtn.classList.replace("submitBtnDisabled", "submitBtnActive")
+                submitBtn.innerText="Gonder"
+            }, 2500);
     })
 })
 

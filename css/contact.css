@@ -52,7 +52,7 @@ textarea{
     justify-content: center;
 }
 
-.submitBtnContainer button{
+.submitBtnActive{
     border: none;
     padding: 8px 50px;
     background-color: rgb(127, 170, 255);
@@ -62,10 +62,19 @@ textarea{
     transition: all .3s ease-in-out;
 }
 
-.submitBtnContainer button:hover{
+.submitBtnActive:hover{
     border-radius: 4px;
     padding: 8px 70px;
     box-shadow: 0px 0px 10px 0px rgb(127, 170, 255);
+}
+
+.submitBtnDisabled{
+    border: none;
+    padding: 8px 50px;
+    background-color: rgb(131, 131, 131);
+    color: white;
+    font-size: 20px;
+    cursor: not-allowed;
 }
 
 .inputError{
@@ -73,13 +82,35 @@ textarea{
     color: orangered;
 }
 
-#reponseContainer{
+#responseContainer{
     display: none;
+}
+
+.responseSuccess{
     position: absolute;
-    border: 1px solid;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 30px 50px;
     z-index: 10;
-    padding: 30px, 50px;
+    background-color: rgb(127, 170, 255);
+    border-radius: 5px;
+    color: #fff;
+}
+
+.responseFail{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 50px;
+    z-index: 10;
+    background-color: rgb(255, 0, 0);
+    border-radius: 5px;
+    color: #fff;
+}
+
+#responseText{
+    text-align: center;
+    line-height: 25px;
 }
