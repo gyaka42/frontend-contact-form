@@ -15,9 +15,11 @@ const contactForm = document.getElementById("contactForm")
 const emailError = document.getElementById("emailError")
 const messageError = document.getElementById("messageError")
 
-const reponseContainer = document.getElementById("reponseContainer")
+const responseContainer = document.getElementById("responseContainer")
 const submitBtn = document.getElementById("submitBtn")
 const responseText = document.getElementById("responseText")
+
+const closeResponse = document.getElementById("closeResponse")
 
 nameInput.addEventListener("focusin",()=>{
     nameLabel.style.color="#000"
@@ -91,12 +93,22 @@ contactForm.addEventListener("submit",(event)=>{
     .then(data=>{
         console.log(data);
         if(data.status === 200){
-            reponseContainer.style.display="block"
-            reponseContainer.classList.add("responseSuccess")
+            responseContainer.style.display="block"
+            responseContainer.classList.add("responseSuccess")
             responseText.innerText = "Formunuz Basariyla Gonderildi"
-            setTimeout(() => {
-                reponseContainer.style.display="none"
-                reponseContainer.classList.remove("responseSuccess")
+        }
+    })
+    .catch(err=>{
+        console.log(err);
+            responseContainer.style.display="block"
+            responseContainer.classList.add("responseFail")
+            responseText.innerText = "Formunuzu Gonderirken Bir Hata Olustu"
+    })
+})
+
+closeResponse.addEventListener("click", () => {
+    responseContainer.style.display="none"
+                responseContainer.classList.remove("responseSuccess")
                 responseText.innerText=""
                 submitBtn.disabled=false
                 submitBtn.classList.replace("submitBtnDisabled", "submitBtnActive")
@@ -105,23 +117,6 @@ contactForm.addEventListener("submit",(event)=>{
                 surname.value=""
                 email.value=""
                 message.value=""
-            }, 2500);
-        }
-    })
-    .catch(err=>{
-        console.log(err);
-            reponseContainer.style.display="block"
-            reponseContainer.classList.add("responseFail")
-            responseText.innerText = "Formunuzu Gonderirken Bir Hata Olustu"
-            setTimeout(() => {
-                reponseContainer.style.display="none"
-                reponseContainer.classList.remove("responseSuccess")
-                responseText.innerText=""
-                submitBtn.disabled=false
-                submitBtn.classList.replace("submitBtnDisabled", "submitBtnActive")
-                submitBtn.innerText="Gonder"
-            }, 2500);
-    })
 })
 
 function validateEmail(email) {

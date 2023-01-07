@@ -114,3 +114,15 @@ textarea{
     text-align: center;
     line-height: 25px;
 }
+
+#closeResponse{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+.closeGif{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
