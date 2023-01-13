@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>List Forms</title>
-    <link rel="stylesheet" href="../css/listForms.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/listForms.css" />
+  </head>
+  <body>
     <h1 class="pageTitle">Veri Tabanindaki Formlar</h1>
-    <div class="formContainer">
-        <div class="formLeft">
-            <div id="firstRow" class="formRow">
-                <span class="formLabel">Adi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</span>
-                <span>&nbsp;Gokhan</span>
-            </div>
-            <div class="formRow">
-                <span class="formLabel">Soyadi :</span>
-                <span>&nbsp;Yaka</span>
-            </div>
-            <div class="formRow">
-                <span class="formLabel">Email&nbsp;&nbsp; :</span>
-                <span><a href="mailto:info@gokhanyaka.com">&nbsp;info@gokhanyaka.com</a></span>
-            </div>
+    <div id="yetkisiz">
+      <form id="loginForm">
+        <div>
+          <label for="usernameInput">Kullanici Adi</label>
+          <input type="text" id="usernameInput" />
         </div>
-        <div class="formRight">
-            <div>
-                <span class="formLabel"> Mesaj :</span>
-            </div>
-            <p class="formMessage">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam illo tenetur ipsa voluptatum iusto? Quisquam eaque nemo laboriosam exercitationem sed, officia, officiis explicabo laudantium sunt itaque iure debitis alias dolores?</p>
+        <div>
+          <label for="passwordInput">Sifre</label>
+          <input type="password" id="passwordInput" />
         </div>
+        <button type="submit">Giris Yap</button>
+      </form>
+      <p id="loginError"></p>
     </div>
-</body>
+    <div id="yetkili"></div>
+    <script src="../JS/listForms.js"></script>
+  </body>
 </html>
