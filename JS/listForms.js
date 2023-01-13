@@ -13,7 +13,7 @@ const loginError = document.getElementById("loginError");
 let isLogin = false;
 
 if (isLogin === false) {
-  yetkisiz.style.display = "block";
+  yetkisiz.style.display = "flex";
   yetkili.style.display = "none";
 } else {
   yetkisiz.style.display = "none";
@@ -22,8 +22,27 @@ if (isLogin === false) {
 
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (usernameInput.value !== username && passwordInput.value !== password) {
+  if (usernameInput.value == "") {
+    loginError.innerText = "Kullanici Adi bos birakilamaz";
+    usernameInput.focus();
+    setTimeout(() => {
+      loginError.innerText = "";
+    }, 2000);
+    return;
+  }
+  if (passwordInput.value == "") {
+    loginError.innerText = "Sifre bos birakilamaz";
+    passwordInput.focus();
+    setTimeout(() => {
+      loginError.innerText = "";
+    }, 2000);
+    return;
+  }
+  if (usernameInput.value !== username || passwordInput.value !== password) {
     loginError.innerText = "Kullanici adi yada sifre yanlis";
+    setTimeout(() => {
+      loginError.innerText = "";
+    }, 2000);
     return;
   }
   yetkisiz.style.display = "none";
@@ -68,10 +87,14 @@ const renderForms = (forms = []) => {
         <div class="formRow">
           <span class="formLabel">Email&nbsp;&nbsp; :</span>
           <span
-            ><a href="mailto:${forms[i].email}"
+            ><a href="mailto:${forms[i].email}?subject=Email konuyu deniyorum"
               >${forms[i].email}</a
             ></span
           >
+        </div>
+        <div class="formRow">
+          <span class="formLabel">Tarih :</span>
+          <span>${new Date(forms[i].date).toDateString()}</span>
         </div>
       </div>
       <div class="formRight">

@@ -11,15 +11,17 @@
     <h1 class="pageTitle">Veri Tabanindaki Formlar</h1>
     <div id="yetkisiz">
       <form id="loginForm">
-        <div>
+        <div class="loginFormRow">
           <label for="usernameInput">Kullanici Adi</label>
           <input type="text" id="usernameInput" />
         </div>
-        <div>
+        <div class="loginFormRow">
           <label for="passwordInput">Sifre</label>
           <input type="password" id="passwordInput" />
         </div>
-        <button type="submit">Giris Yap</button>
+        <div class="loginFormBtnContainer">
+          <button type="submit">Giris Yap</button>
+        </div>
       </form>
       <p id="loginError"></p>
     </div>
