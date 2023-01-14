@@ -9,6 +9,7 @@ const usernameInput = document.getElementById("usernameInput");
 const passwordInput = document.getElementById("passwordInput");
 
 const loginError = document.getElementById("loginError");
+const toTopBtn = document.getElementById("toTopBtn");
 
 let isLogin = false;
 
@@ -104,8 +105,13 @@ const renderForms = (forms = []) => {
         <p class="formMessage">
         ${forms[i].message}
         </p>
+        div
       </div>
     `;
     yetkili.appendChild(form);
   }
 };
+
+toTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
